@@ -34,17 +34,20 @@ export default function App() {
           <ul>
             {titleList.map((title, i) => {
               return (
-                <>
-                  <li key={i}>
-                    <span>{title}</span>
-                    <button
-                      onClick={() => removeTask(i)}
-                      className="btn btn-danger p-1 m-4 "
-                    >
-                      Elimina
-                    </button>
-                  </li>
-                </>
+                title && (
+                  <>
+                    <li key={i}>
+                      <span>{title}</span>
+                      <button
+                        key={i}
+                        onClick={() => removeTask(i)}
+                        className="btn btn-danger p-1 m-4 "
+                      >
+                        Elimina
+                      </button>
+                    </li>
+                  </>
+                )
               );
             })}
           </ul>
