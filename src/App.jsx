@@ -7,7 +7,7 @@ import { useState } from "react";
 export default function App() {
   const [titleList, setTitleList] = useState([]);
   const [newsTitle, setNewtitle] = useState("");
-
+  // const [clicke, setClicked] = useState(newListTitle);
   function handelchange(e) {
     setNewtitle(e.target.value);
   }
@@ -18,6 +18,12 @@ export default function App() {
     console.log(newListTitle);
     setTitleList(newListTitle);
   }
+  function removeTask(i) {
+    const updateTitleList = titleList.filter((title, index) => {
+      return index !== i;
+    });
+    setTitleList(updateTitleList);
+  }
 
   return (
     <>
@@ -27,7 +33,19 @@ export default function App() {
         <div className="card mt-3">
           <ul>
             {titleList.map((title, i) => {
-              return <li key={i}>{title}</li>;
+              return (
+                <>
+                  <li key={i}>
+                    <span>{title}</span>
+                    <button
+                      onClick={() => removeTask(i)}
+                      className="btn btn-danger p-1 m-4 "
+                    >
+                      Elimina
+                    </button>
+                  </li>
+                </>
+              );
             })}
           </ul>
         </div>
