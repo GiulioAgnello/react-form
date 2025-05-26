@@ -3,11 +3,13 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Main from "./components/Main";
 // funzioni
-const newsTitle = "titolo primo";
-const handelchange = (e) => {
+const [newsTitle, setNewtitle] = useState("");
+
+function handelchange(e) {
   e.preventDefault();
-  console.log(e);
-};
+  setNewtitle(e.target.value);
+  // console.log(e.target.value);
+}
 
 export default function App() {
   return (
